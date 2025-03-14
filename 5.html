@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .slider {
+            position: relative;
+            max-width: 500px;
+            margin: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .btn {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Image Slider</h2>
+    <div class="slider">
+        <img id="sliderImage" src="" alt="Image Slider">
+        <div>
+            <button class="btn" onclick="prevImage()">Previous</button>
+            <button class="btn" onclick="nextImage()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "https://via.placeholder.com/500x300/FF5733/ffffff?text=Image+1",
+            "https://via.placeholder.com/500x300/33FF57/ffffff?text=Image+2",
+            "https://via.placeholder.com/500x300/3357FF/ffffff?text=Image+3"
+        ];
+        
+        let currentIndex = 0;
+        const sliderImage = document.getElementById("sliderImage");
+        
+        function updateImage() {
+            sliderImage.src = images[currentIndex];
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+        
+        // Initialize slider
+        updateImage();
+    </script>
+</body>
+</html>
